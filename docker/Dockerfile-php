@@ -10,6 +10,7 @@ build-essential locales acl mailutils wget nodejs zip unzip \
 gnupg gnupg1 gnupg2 \
 sudo \
 ssh \
+npm \
 && docker-php-ext-install \
 pdo_mysql \
 soap \
@@ -31,4 +32,7 @@ RUN mkdir -p /var/www
 RUN chown -R www-data:www-data /var/www
 RUN mkdir -p /var/www/.composer
 RUN chown -R www-data:www-data /var/www/.composer
+
+RUN composer selfupdate
+
 WORKDIR /var/www/project/
