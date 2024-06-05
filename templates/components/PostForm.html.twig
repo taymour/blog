@@ -1,0 +1,13 @@
+<div class="col-xs-8" {{ attributes }}>
+    {{ form_start(form, {
+        attr: {
+            'data-action': 'live#action:prevent',
+            'data-live-action-param': 'save',
+        }
+    }) }}
+
+    {{ form_row(form.title) }}
+    {{ form_row(form.body) }}
+
+    {{ form_end(form) }}
+</div>

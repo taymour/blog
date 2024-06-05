@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use function Zenstruck\Foundry\faker;
 
 class PostController extends AbstractController
@@ -55,6 +56,14 @@ class PostController extends AbstractController
         ]);
     }
 
+    #[Route('/post/show/{id}', name: 'blog_post_show')]
+    public function show(Post $post): Response
+    {
+        return $this->render('post/show.html.twig', [
+            'post' => $post,
+        ]);
+    }
+
     #[Route('/post/edit/{id}', name: 'blog_post_edit')]
     public function edit(Request $request, Post $post, EntityManagerInterface $entityManager): Response
     {
@@ -65,10 +74,11 @@ class PostController extends AbstractController
             $entityManager->persist($post);
             $entityManager->flush();
 
-            return $this->redirectToRoute('blog_post_list');
+//            return $this->redirectToRoute('blog_post_list');
         }
 
-        return $this->render('post/new.html.twig', [
+        return $this->render('post/edit.html.twig', [
+            'post' => $post,
             'form' => $form,
         ]);
     }

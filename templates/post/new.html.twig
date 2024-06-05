@@ -4,12 +4,10 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-xs-4">
-            <h1>Blog creation</h1>
-        </div>
-    <div class="row">
-        <div class="col-xs-8">
-            {{ form(form) }}
+        <div class="col-6 mt-5">
+            {{ component('PostForm', {
+                form: form
+            }) }}
         </div>
     </div>
 {% endblock %}

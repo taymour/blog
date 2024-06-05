@@ -18,25 +18,7 @@
     </div>
     <div class="row">
         {% for post in posts %}
-            <div class="col mt-5">
-                    <div class="card" style="width: 400px; height: 250px;">
-                        <h5 class="card-header">{{ post.title | u.truncate(35, '...') }}</h5>
-                        <div class="card-body">
-                            <p class="card-text">{{ post.body | u.truncate(100, '...') }}</p>
-                        </div>
-                        <div class="card-footer">
-                            <i>
-                                {{ post.createdAt |date('Y-m-d') }}
-                            </i>
-                            <a href="{{ path('blog_post_edit', {'id': post.id}) }}" class="btn btn-sm btn-info text-right">
-                                Modify
-                            </a>
-                            <a href="{{ path('blog_post_delete', {'id': post.id}) }}" class="btn btn-sm btn-danger text-right">
-                                Delete
-                            </a>
-                        </div>
-                    </div>
-            </div>
+            {{ component('PostCard', {post: post}) }}
         {% endfor %}
     </div>
 {% endblock %}
