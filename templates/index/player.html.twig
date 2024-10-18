@@ -5,14 +5,18 @@
 
 Player number : {{ random() }}
 
-{#<div data-controller="hello">#}
-{#    STIMULUS DIV#}
-{#</div>#}
+<div data-controller="hello">
+    STIMULUS DIV
+</div>
 
 <h1>React</h1>
 
+<div id="react">
+    AA
+    BB
+    {{ random(3,500) }}
+</div>
+
 <div>
-    <div {{ react_component('Hello', { fullName: 'Toto' }) }}>
-        Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
-    </div>
+    <div {{ react_component('Hello', { fullName: ('Toto' ~random(1,1000)) }) }}></div>
 </div>
