@@ -20,6 +20,12 @@
         <div class="container mt-5" data-turbo-prefetch="false">
             {% block body %}
             {% endblock %}
+            <hr>
+            <hr>
+            <hr>
+            <div data-turbo-permanent id="my_player">
+                {% include('index/player.html.twig') %}
+            </div>
         </div>
     </body>
 </html>

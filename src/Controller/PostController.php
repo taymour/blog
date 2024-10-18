@@ -74,7 +74,7 @@ class PostController extends AbstractController
             $entityManager->persist($post);
             $entityManager->flush();
 
-//            return $this->redirectToRoute('blog_post_list');
+            return $this->redirectToRoute('blog_post_list');
         }
 
         return $this->render('post/edit.html.twig', [

@@ -2,11 +2,13 @@
     "devDependencies": {
         "@babel/core": "^7.17.0",
         "@babel/preset-env": "^7.16.0",
+        "@babel/preset-react": "^7.25.7",
         "@hotwired/stimulus": "^3.0.0",
         "@hotwired/turbo": "^7.1.1 || ^8.0",
         "@symfony/ux-live-component": "file:vendor/symfony/ux-live-component/assets",
         "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/assets",
         "@symfony/webpack-encore": "^4.6.1",
+        "@symfony/ux-react": "file:vendor/symfony/ux-react/assets",
         "core-js": "^3.23.0",
         "regenerator-runtime": "^0.13.9",
         "webpack": "^5.74.0",
@@ -22,6 +24,10 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "@symfony/stimulus-bridge": "^3.2.2"
+        "@symfony/stimulus-bridge": "^3.2.2",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "stimulus-use": "^0.52.2",
+        "ux-react": "symfony/ux-react"
     }
 }

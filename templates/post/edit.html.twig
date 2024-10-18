@@ -9,9 +9,11 @@
         </div>
     </div>
     <div class="row">
-        {{ component('PostForm', {
-            initialFormData: post,
-            form: form,
-        }) }}
+        <turbo-frame id="post_{{ post.id }}">
+            {{ component('PostForm', {
+                initialFormData: post,
+                form: form,
+            }) }}
+        </turbo-frame>
     </div>
 {% endblock %}

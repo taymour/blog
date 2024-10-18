@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Cocorico{% endblock %}
+
+{% block body %}
+    <div data-controller="content-loader">
+        <a
+                href="#"
+                data-content-loader-url-param="/content/messages"
+                data-action="content-loader#load"
+        >Message</a>
+        <a
+                href="#"
+                data-content-loader-url-param="/content/comments"
+                data-action="content-loader#load"
+        >Comment</a>
+        <h1>Preview : </h1>
+        <p id="preview"></p>
+    </div>
+{% endblock %}

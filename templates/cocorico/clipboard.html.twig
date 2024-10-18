@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Cocorico{% endblock %}
+
+{% block body %}
+    <div data-controller="clipboard" data-clipboard-supported-class="clipboard--supported">
+        PIN : <input data-clipboard-target="source" type="text" value="1234" readonly>
+        <button data-action="clipboard#copy" class="clipboard-button">Copy to Clipboard</button>
+    </div>
+{#    <div data-controller="clipboard">#}
+{#        PIN 666 : <textarea data-clipboard-target="source" readonly>777</textarea>#}
+{#        <a href="#" data-action="clipboard#copy">Copy to Clipboard</a>#}
+{#    </div>#}
+{% endblock %}
