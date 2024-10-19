@@ -10,9 +10,9 @@ export default function Hello(props) {
 
     return (
         <div>
-            <h1>Hello, {props.fullName}!</h1>
-            <p>You have clicked <span id="count">0</span> times.</p>
-            <button onClick={incrementCount}>Click me!</button>
+            <h1>Clicks: <span id="count">0</span> </h1>
+            <p>Hello, {props.fullName}</p>
+            <button onClick={incrementCount}>Click</button>
         </div>
     );
 }
