@@ -28,29 +28,29 @@ Before you begin, make sure your development machine has the following installed
 3. **Build and start the containers:**
 
    ```bash
-    docker-compose up -d
+    docker compose up -d
     ```
 
 4. **Install PHP dependencies with Composer:**
     ```bash
-    docker-compose exec php composer install
+    docker compose exec php composer install
     ```
 
 5. **Install JavaScript dependencies with Yarn:**
     ```bash
-    docker-compose exec php yarn install
+    docker compose exec php yarn install
     ```
 
 6. **Create the database:**
 
     ```bash
-    docker-compose exec php php bin/console doctrine:database:create
+    docker compose exec php php bin/console doctrine:database:create
    ```
    
 7. **Update the database schema:**
 
     ```bash
-    docker-compose exec php php bin/console doctrine:schema:update --force
+    docker compose exec php php bin/console doctrine:schema:update --force
    ```
 
 8. **Configure the domain name:**

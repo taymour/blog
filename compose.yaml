@@ -27,7 +27,7 @@ services:
       - "80:80"  # Redirige le port 80 vers le conteneur Nginx
     volumes:
       - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf  # Fichier de configuration Nginx
-      - /home/taneg/Projects/blog:/var/www/html  # Répertoire public de Symfony
+      - ./:/var/www/html  # Répertoire public de Symfony
     networks:
       - symfony
 
@@ -36,7 +36,7 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
     volumes:
-      - /home/taneg/Projects/blog:/var/www/html
+      - ./:/var/www/html
     networks:
       - symfony
 
