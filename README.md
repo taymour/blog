@@ -9,15 +9,14 @@ Before you begin, make sure your development machine has the following installed
 
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/)
-- [Yarn](https://classic.yarnpkg.com/en/docs/install)
 
 ## Installation
 
 1. **Clone the repository :**
 
    ```bash
-   git clone <URL_DE_VOTRE_DEPOT>
-   cd <NOM_DU_REPERTOIRE>
+   git clone <URL_OF_THE_REPOSITORY>
+   cd <NAME_OF_THE_DIRECTORY>
    ```
    
 2. **Copy the .env.dist file to .env:**
