@@ -22,3 +22,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # Redis
+    Snc\RedisBundle\SncRedisBundle: ~
+
+    Predis\Client: '@snc_redis.default' # better to use ClientInterface to simplify testing
+    Predis\ClientInterface: '@snc_redis.default'
+#    Predis\Client:
+#        arguments:
+#            $parameters: 'redis://redis:6379'
