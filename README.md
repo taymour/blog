@@ -1,11 +1,11 @@
 
 # Symfony 7 Blog Project
 
-Ce projet est une application Symfony 7 utilisant Docker pour la gestion des conteneurs. Il inclut une base de données MariaDB, Redis pour la mise en cache, et Nginx comme serveur web.
+This project is a Symfony 7 application using Docker for container management. It includes a MariaDB database, Redis for caching, and Nginx as a web server.
 
-## Prérequis
+## Pre-requisites
 
-Avant de commencer, assurez-vous d'avoir installé :
+Before you begin, make sure your development machine has the following installed:
 
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/)
@@ -13,46 +13,51 @@ Avant de commencer, assurez-vous d'avoir installé :
 
 ## Installation
 
-1. **Clonez le dépôt :**
+1. **Clone the repository :**
 
    ```bash
    git clone <URL_DE_VOTRE_DEPOT>
    cd <NOM_DU_REPERTOIRE>
    ```
    
-2. **Construisez et démarrez les conteneurs :**
+2. **Copy the .env.dist file to .env:**
+
+   ```bash
+   cp .env.dist .env
+   ```
+
+3. **Build and start the containers:**
 
    ```bash
     docker-compose up -d
     ```
 
-3. **Installez les dépendances PHP avec Composer :**
+4. **Install PHP dependencies with Composer:**
     ```bash
     docker-compose exec php composer install
     ```
 
-
-4. **Installez les dépendances JavaScript avec Yarn :**
+5. **Install JavaScript dependencies with Yarn:**
     ```bash
     docker-compose exec php yarn install
     ```
-   
-5. **Créez la base de données :**
+
+6. **Create the database:**
 
     ```bash
     docker-compose exec php php bin/console doctrine:database:create
    ```
    
-6. **Exécutez les migrations :**
+7. **Update the database schema:**
 
     ```bash
     docker-compose exec php php bin/console doctrine:schema:update --force
    ```
-   
-7. **Configuration du nom de domaine :**
 
-Ajouter au fichier /etc/hosts la ligne suivante :
+8. **Configure the domain name:**
+
+    Add the following line to the /etc/hosts file:
 `127.0.0.1 blog.taymik.com`
 
-8. **Démarrage du projet :**
+9. **Ready:**
    Votre application sera accessible à l'adresse suivante : http://blog.taymik.com.
