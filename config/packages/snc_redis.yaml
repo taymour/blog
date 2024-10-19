@@ -5,3 +5,6 @@ snc_redis:
             alias: default
             dsn: redis://redis:6379
             logging: true
+    class:
+        connection_wrapper: App\ImpRedis\Connection\ImpConnectionWrapper
+        logger: App\ImpRedis\Logger\ImpRedisLogger

@@ -26,8 +26,16 @@ services:
     # Redis
     Snc\RedisBundle\SncRedisBundle: ~
 
+#    Snc\RedisBundle\Logger\RedisLogger: ~
     Predis\Client: '@snc_redis.default' # better to use ClientInterface to simplify testing
     Predis\ClientInterface: '@snc_redis.default'
-#    Predis\Client:
-#        arguments:
-#            $parameters: 'redis://redis:6379'
+
+
+    # IMP REDIS
+
+    snc_redis.data_collector: '@App\ImpRedis\DataCollector\ImpRedisDataCollector'
+    App\ImpRedis\DataCollector\ImpRedisDataCollector:
+        tags:
+            - { name: 'data_collector', template: 'data_collector/redis.html.twig', id: 'redis' }
+        arguments:
+            $logger: '@snc_redis.logger'
