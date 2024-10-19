@@ -1,0 +1,120 @@
+{% extends '@SncRedis/Collector/redis.html.twig' %}
+
+{% block panel %}
+    {% set profiler_markup_version = profiler_markup_version|default(1) %}
+
+    <h2>Commands</h2>
+
+    {% if collector.commandcount == 0 %}
+        <div class="empty">
+            <p{% if profiler_markup_version == 1 %} style="font-style:italic;"{% endif %}>No commands were executed or the logger is disabled.</p>
+        </div>
+    {% else %}
+        <div class="metrics">
+            <div class="metric">
+                <span class="value">{{ collector.commandcount }}</span>
+                <span class="label">Queries</span>
+            </div>
+
+            <div class="metric">
+                <span class="value">{{ '%0.2f'|format(collector.time) }} <span class="unit">ms</span></span>
+                <span class="label">Query time</span>
+            </div>
+
+            <div class="metric highlight">
+                <span class="value{% if collector.erroredCommandsCount > 0 %} error{% endif %}">{{ collector.erroredCommandsCount }}</span>
+                <span class="label">Failed Queries</span>
+            </div>
+        </div>
+
+        <table class="alt">
+            <thead>
+            <tr>
+                <th class="nowrap">#</th>
+                <th class="nowrap">Time</th>
+                <th class="nowrap">Connection</th>
+                <th style="width:100%">Command</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for command in collector.commands %}
+                <tr class="
+                        {% if collector.hasResult(command)%}imp-redis-collector-command{% endif %}
+                        {% if command.error %} status-error{% endif %}
+                    " data-command-id="command-{{ loop.index }}">
+                    <td>{{ loop.index }}</td>
+                    <td class="nowrap">{{ '%0.2f'|format(command.executionMS) }} ms</td>
+                    <td class="font-normal">{{ command.conn }}</td>
+                    <td>
+                        {{ command.cmd }}
+
+                        {% if command.error %}
+                            <br><strong class="font-normal">An error occurred: {{ command.error }}</strong>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr id="command-{{ loop.index }}" class="result-row" style="display: none;">
+                    <td colspan="4">
+                        {{ profiler_dump(collector.extractResult(command)) }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+
+    <style>
+        .imp-redis-collector-command {
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .imp-redis-collector-command:hover {
+            background-color: rgba(240, 240, 240, 0.14);
+        }
+
+        .imp-redis-collector-command.selected {
+            background-color: #1dc9a433;
+        }
+
+        .result-row {
+            background-color: rgba(249, 249, 249, 0);
+            font-style: italic;
+            border-left: 4px solid #007bff;
+            transition: opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .result-row td {
+            padding: 15px;
+        }
+
+        .result-row.visible {
+            display: table-row;
+            opacity: 1;
+        }
+    </style>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.imp-redis-collector-command').forEach(function (row) {
+                row.addEventListener('click', function () {
+                    const commandId = this.getAttribute('data-command-id');
+                    const resultRow = document.getElementById(commandId);
+
+                    this.classList.toggle('selected');
+
+                    if (resultRow.style.display === 'none') {
+                        resultRow.style.display = 'table-row';
+                    } else {
+                        resultRow.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+
+{% endblock %}
