@@ -19,4 +19,10 @@ class ReactComponentController extends AbstractController
     {
         return $this->render('index/another.html.twig');
     }
+    
+    #[Route('/react/noplayer', name: 'app_react_index_noplayer')]
+    public function noplayer(): Response
+    {
+        return $this->render('index/noplayer.html.twig');
+    }
 }
