@@ -1,0 +1,34 @@
+<div
+        {{ attributes }}
+        data-url="{{ build_url(this.urlProps) }}" {# To be guessed automatically and set by PHP Component code as attributes values for props #}
+>
+    <h2>Limit : {{ this.limit }}</h2>
+    <label>
+        Choose a limit :
+
+        <button class="btn-small" {{ live_action('changeLimit', {'limit': 1}) }}>1</button>
+        <button class="btn-small" {{ live_action('changeLimit', {'limit': 5}) }}>5</button>
+        <button class="btn-small" {{ live_action('changeLimit', {'limit': 10}) }}>10</button>
+    </label>
+    <h2>Letter : {{ this.letter|upper }}</h2>
+    <label>
+        Choose a letter :
+
+        <button class="btn-small" {{ live_action('changeLetter', {'letter': 'a'}) }}>Letter A</button>
+        <button class="btn-small" {{ live_action('changeLetter', {'letter': 'b'}) }}>Letter B</button>
+        <button class="btn-small" {{ live_action('changeLetter', {'letter': 'c'}) }}>Letter C</button>
+    </label>
+    <h2>Change letter & limit :</h2>
+    <label>
+        Choose a letter & limit combo :
+
+        <button class="btn-small" {{ live_action('changeLetterAndLimit', {'letter': 'a', 'limit': 8}) }}>A & 8</button>
+        <button class="btn-small" {{ live_action('changeLetterAndLimit', {'letter': 'b', 'limit': 3}) }}>B & 3</button>
+        <button class="btn-small" {{ live_action('changeLetterAndLimit', {'letter': 'c', 'limit': 6}) }}>C & 6</button>
+    </label>
+    <ul>
+        {% for name in this.names %}
+            <li>{{ name }}</li>
+        {% endfor %}
+    </ul>
+</div>

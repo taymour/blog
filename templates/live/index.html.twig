@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LiveController!{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        {# To be injected seemlessly #}
+        <div data-controller="url"></div>
+        <h1>Hello live</h1>
+
+        <div class="block-components">
+            <twig:Chapter chapter="{{ chapter }}"/>
+            <twig:Names letter="{{ letter }}"/>
+            <twig:Number number="1"/>
+        </div>
+    </div>
+{% endblock %}

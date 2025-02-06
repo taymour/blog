@@ -1,0 +1,13 @@
+<div
+        {{ attributes }}
+        data-url="{{ build_url(this.urlProps) }}" {# To be guessed automatically and set by PHP Component code as attributes values for props #}
+>
+    <h2>Chapter : {{ this.chapter }}</h2>
+    <div>
+        <button class="btn-small" {{ live_action('changeChapter', {'chapter': 'chapter-1'}) }}>Chapter 1</button>
+        <button class="btn-small" {{ live_action('changeChapter', {'chapter': 'chapter-2'}) }}>Chapter 2</button>
+        <button class="btn-small" {{ live_action('changeChapter', {'chapter': 'chapter-3'}) }}>Chapter 3</button>
+        <button class="btn-small" {{ live_action('changeChapter', {'chapter': 'chapter-4'}) }}>Chapter 4</button>
+        <button class="btn-small" {{ live_action('changeChapter', {'chapter': 'chapter-5'}) }}>Chapter 5</button>
+    </div>
+</div>
