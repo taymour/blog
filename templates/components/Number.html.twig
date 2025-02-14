@@ -1,0 +1,11 @@
+<div {{ attributes }}>
+    <h2>Number : {{ this.number }}</h2>
+    <div>
+        <button class="btn-small" {{ live_action('changeNumber', {'number': 1}) }}>Number 1</button>
+        <button class="btn-small" {{ live_action('changeNumber', {'number': 2}) }}>Number 2</button>
+        <button class="btn-small" {{ live_action('changeNumber', {'number': 3}) }}>Number 3</button>
+        <button class="btn-small" {{ live_action('changeNumber', {'number': 4}) }}>Number 4</button>
+        <button class="btn-small" {{ live_action('changeNumber', {'number': 5}) }}>Number 5</button>
+    </div>
+    <h3>Result : {{ this.result }}</h3>
+</div>
